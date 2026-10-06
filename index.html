@@ -86,6 +86,10 @@
       .project-gallery figure:first-child { grid-column: span 2; grid-row: span 2; }
       .project-gallery img { width: 100%; height: 100%; min-height: 230px; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .4s ease; }
       .project-gallery figure:not(:first-child) img { aspect-ratio: 4 / 3; }
+      .project-card--two .project-gallery figure { grid-column: span 2; }
+      .project-card--two .project-gallery figure:first-child { grid-row: span 1; }
+      .project-card--three .project-gallery figure:not(:first-child) { grid-column: span 2; }
+      .project-card--four .project-gallery figure:last-child { grid-column: span 2; }
       .project-gallery figure:hover img { transform: scale(1.045); filter: saturate(.82); }
       .project-gallery figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 24px 18px 14px; color: #fff; background: linear-gradient(transparent, rgba(0,0,0,.64)); font-size: 11px; letter-spacing: .12em; opacity: 0; text-transform: uppercase; transition: opacity .3s ease; }
       .project-gallery figure:hover figcaption { opacity: 1; }
@@ -141,6 +145,7 @@
         h2 { font-size: clamp(52px, 6.8vw, 78px); }
         .project-gallery { grid-template-columns: repeat(2, 1fr); }
         .project-gallery figure:first-child { grid-column: span 2; grid-row: span 1; }
+        .project-card--three .project-gallery figure:not(:first-child) { grid-column: span 1; }
       }
 
       @media (max-width: 760px) {
@@ -172,6 +177,10 @@
         .project-gallery { grid-template-columns: repeat(2, 1fr); gap: 9px; }
         .project-gallery figure:first-child { grid-column: span 2; }
         .project-gallery img, .project-gallery figure:not(:first-child) img { min-height: 160px; aspect-ratio: 4 / 5; }
+        .project-card--three .project-gallery figure:not(:first-child) { grid-column: span 1; }
+        .project-card--two .project-gallery { grid-template-columns: 1fr; }
+        .project-card--two .project-gallery figure { grid-column: span 1; }
+        .project-card--four .project-gallery figure:last-child { grid-column: span 2; }
         .work-overlay { display: none; }
         .filter { padding: 9px 13px; font-size: 11px; }
         .portfolio-grid { margin-top: 22px !important; }
@@ -260,7 +269,7 @@
           <button class="filter" type="button" data-filter="floral">Arte floral</button>
         </div>
         <div class="portfolio-grid" style="margin-top: 30px">
-          <article class="project-card reveal" data-category="celebracao">
+          <article class="project-card project-card--four reveal" data-category="celebracao">
             <div class="project-head"><h3 class="project-title">Jardim em festa</h3><p class="project-meta">Aniversário · Tiradentes · 04 imagens do mesmo projeto</p></div>
             <div class="project-gallery">
               <figure><img src="pastel-table.png" alt="Mesa de festa ao ar livre com flores e balões em tons pastel" loading="lazy" /><figcaption>Vista geral</figcaption></figure>
@@ -269,7 +278,7 @@
               <figure><img src="garden-cake.png" alt="Bolo branco de três andares cercado por flores de jardim" loading="lazy" /><figcaption>Detalhe doce</figcaption></figure>
             </div>
           </article>
-          <article class="project-card reveal delay-1" data-category="floral">
+          <article class="project-card project-card--four reveal delay-1" data-category="floral">
             <div class="project-head"><h3 class="project-title">Tropical essencial</h3><p class="project-meta">Floral design · Região · 04 imagens do mesmo projeto</p></div>
             <div class="project-gallery">
               <figure><img src="tropical-table-01.png" alt="Mesa tropical com folhagens e flores brancas" loading="lazy" /><figcaption>Vista frontal</figcaption></figure>
@@ -278,7 +287,7 @@
               <figure><img src="rustic-lounge.png" alt="Ambiente rústico com flores, madeira e luminárias de palha" loading="lazy" /><figcaption>Atmosfera</figcaption></figure>
             </div>
           </article>
-          <article class="project-card reveal delay-2" data-category="celebracao">
+          <article class="project-card project-card--three reveal delay-2" data-category="celebracao">
             <div class="project-head"><h3 class="project-title">Cor viva</h3><p class="project-meta">Recepção · Tiradentes · 03 imagens do mesmo projeto</p></div>
             <div class="project-gallery">
               <figure><img src="colorful-floral.png" alt="Cenografia colorida com plantas, flores tropicais e luminárias" loading="lazy" /><figcaption>Cenografia</figcaption></figure>
@@ -286,14 +295,14 @@
               <figure><img src="pendant-lights.png" alt="Instalação floral colorida com luminárias artesanais" loading="lazy" /><figcaption>Luz e cor</figcaption></figure>
             </div>
           </article>
-          <article class="project-card reveal" data-category="casamento">
+          <article class="project-card project-card--two reveal" data-category="casamento">
             <div class="project-head"><h3 class="project-title">Cerimônia ao ar livre</h3><p class="project-meta">Casamento · Lavras e região · 02 imagens do mesmo projeto</p></div>
             <div class="project-gallery">
               <figure><img src="outdoor-ceremony.png" alt="Cerimônia ao ar livre com arco de flores brancas" loading="lazy" /><figcaption>Arco floral</figcaption></figure>
               <figure><img src="white-ceremony.png" alt="Caminho de cerimônia com flores brancas em um campo" loading="lazy" /><figcaption>Caminho branco</figcaption></figure>
             </div>
           </article>
-          <article class="project-card reveal delay-1" data-category="floral">
+          <article class="project-card project-card--two reveal delay-1" data-category="floral">
             <div class="project-head"><h3 class="project-title">Composições florais</h3><p class="project-meta">Arte floral · Lavras · 02 imagens do mesmo projeto</p></div>
             <div class="project-gallery">
               <figure><img src="floral-table.png" alt="Mesa de doces com cascata floral branca e luz quente" loading="lazy" /><figcaption>Luz & flores</figcaption></figure>
