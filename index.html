@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Júnior Décor — Decoração de Eventos</title>
+    <meta name="description" content="Decoração autoral, arte floral e eventos de alto padrão em Lavras, Tiradentes e região." />
+    <meta name="theme-color" content="#333627" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23333627'/%3E%3Cpath d='M20 42c9-2 10-13 12-21 2 8 4 19 12 21M24 37c4-3 8-7 8-13M40 37c-4-3-8-7-8-13' fill='none' stroke='%23efe9dc' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Italiana&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --olive: #333627;
+        --olive-2: #52583c;
+        --wine: #5a2733;
+        --cream: #f4efe5;
+        --paper: #fbf9f4;
+        --ink: #20231d;
+        --muted: #73766a;
+        --line: rgba(51, 54, 39, .17);
+        --display: "Italiana", Georgia, serif;
+        --sans: "DM Sans", Arial, sans-serif;
+        --radius-lg: 30px;
+        --radius-md: 18px;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); font-size: 16px; line-height: 1.55; overflow-x: hidden; }
+      img { display: block; width: 100%; }
+      a { color: inherit; text-decoration: none; }
+      button { font: inherit; }
+      ::selection { background: var(--wine); color: var(--cream); }
+
+      .topbar { position: fixed; z-index: 20; top: 0; left: 0; width: 100%; padding: 22px 4.3vw; display: flex; justify-content: space-between; align-items: center; color: var(--cream); mix-blend-mode: difference; }
+      .brand { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 600; letter-spacing: .23em; text-transform: uppercase; }
+      .brand-mark { width: 28px; height: 28px; border: 1px solid currentColor; border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-size: 17px; letter-spacing: 0; }
+      .nav { display: flex; gap: 27px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+      .nav a { opacity: .84; transition: opacity .25s ease; }
+      .nav a:hover { opacity: 1; }
+      .menu-toggle { display: none; background: none; border: 0; color: currentColor; }
+
+      .hero { min-height: 100svh; position: relative; display: flex; align-items: flex-end; overflow: hidden; background: var(--olive); color: var(--cream); }
+      .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(21, 23, 17, .72) 0%, rgba(21, 23, 17, .24) 48%, rgba(21, 23, 17, .16) 100%), linear-gradient(0deg, rgba(21, 23, 17, .72), transparent 50%); }
+      .hero-media { position: absolute; inset: 0; object-fit: cover; object-position: 62% 50%; filter: saturate(.74) contrast(1.03); animation: hero-in 1.4s ease both; }
+      .hero-content { position: relative; z-index: 2; width: 100%; padding: 0 7vw 7.4vh; display: grid; grid-template-columns: minmax(320px, 700px) 1fr; align-items: end; gap: 7vw; }
+      .eyebrow { margin: 0 0 18px; color: rgba(244,239,229,.78); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; }
+      h1, h2, h3, p { margin-top: 0; }
+      h1 { max-width: 720px; margin-bottom: 28px; font-family: var(--display); font-size: clamp(62px, 9.1vw, 142px); font-weight: 400; line-height: .86; letter-spacing: -.045em; }
+      .hero-lede { max-width: 370px; margin: 0; color: rgba(244,239,229,.82); font-size: 15px; }
+      .hero-side { justify-self: end; width: min(100%, 260px); padding-bottom: 3px; }
+      .hero-side p { margin-bottom: 20px; font-size: 12px; line-height: 1.55; color: rgba(244,239,229,.73); }
+      .scroll-cue { display: flex; gap: 12px; align-items: center; color: var(--cream); font-size: 10px; letter-spacing: .19em; text-transform: uppercase; }
+      .scroll-cue::before { content: ""; width: 40px; height: 1px; background: currentColor; opacity: .6; }
+
+      .section { padding: 140px 7vw; }
+      .section--olive { background: var(--olive); color: var(--cream); }
+      .section--wine { background: var(--wine); color: var(--cream); }
+      .section-head { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin-bottom: 60px; }
+      .section-kicker { margin: 0 0 14px; color: var(--olive-2); font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+      .section--olive .section-kicker, .section--wine .section-kicker { color: #c4b88f; }
+      h2 { max-width: 760px; margin-bottom: 0; font-family: var(--display); font-size: clamp(48px, 6.8vw, 100px); font-weight: 400; line-height: .94; letter-spacing: -.04em; }
+      .section-intro { max-width: 315px; margin: 0; color: var(--muted); font-size: 15px; }
+      .section--olive .section-intro, .section--wine .section-intro { color: rgba(244,239,229,.69); }
+
+      .statement { display: grid; grid-template-columns: 1fr 1.2fr; gap: 12vw; align-items: center; }
+      .statement-copy p { max-width: 500px; margin: 34px 0 0; color: var(--muted); font-size: clamp(18px, 2vw, 25px); line-height: 1.35; }
+      .statement-figure { position: relative; margin: 0; }
+      .statement-figure img { aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius-lg) var(--radius-lg) 0 var(--radius-lg); }
+      .figure-note { position: absolute; right: -2px; bottom: -1px; width: 44%; padding: 24px; background: var(--wine); color: var(--cream); border-radius: 22px 0 0 0; }
+      .figure-note strong { display: block; font-family: var(--display); font-size: 42px; line-height: .9; font-weight: 400; }
+      .figure-note span { display: block; margin-top: 9px; color: rgba(244,239,229,.7); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+
+      .work-nav { display: flex; flex-wrap: wrap; gap: 10px; }
+      .filter { padding: 10px 16px; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--muted); cursor: pointer; font-size: 12px; transition: .25s ease; }
+      .filter:hover, .filter.is-active { border-color: var(--olive); background: var(--olive); color: var(--cream); }
+      .portfolio-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; align-items: start; }
+      .work-card { position: relative; grid-column: span 4; overflow: hidden; cursor: pointer; }
+      .work-card:nth-child(1), .work-card:nth-child(6), .work-card:nth-child(10) { grid-column: span 5; }
+      .work-card:nth-child(2), .work-card:nth-child(5), .work-card:nth-child(8) { grid-column: span 7; }
+      .work-card:nth-child(3), .work-card:nth-child(4), .work-card:nth-child(7), .work-card:nth-child(9) { grid-column: span 4; }
+      .work-card img { aspect-ratio: 4 / 5; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .4s ease; }
+      .work-card:nth-child(2) img, .work-card:nth-child(5) img, .work-card:nth-child(8) img { aspect-ratio: 7 / 5; }
+      .work-card:hover img { transform: scale(1.045); filter: saturate(.8); }
+      .work-overlay { position: absolute; inset: auto 0 0; padding: 27px 24px 23px; color: #fff; background: linear-gradient(transparent, rgba(0,0,0,.67)); transform: translateY(12px); opacity: 0; transition: .35s ease; }
+      .work-card:hover .work-overlay { transform: translateY(0); opacity: 1; }
+      .work-title { margin: 0 0 2px; font-family: var(--display); font-size: 30px; line-height: 1; }
+      .work-meta { margin: 0; color: rgba(255,255,255,.72); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+      .work-card.is-hidden { display: none; }
+
+      .marquee { overflow: hidden; padding: 22px 0; border-top: 1px solid rgba(244,239,229,.18); border-bottom: 1px solid rgba(244,239,229,.18); }
+      .marquee-track { width: max-content; display: flex; gap: 34px; animation: marquee 22s linear infinite; }
+      .marquee span { font-family: var(--display); font-size: clamp(34px, 5vw, 72px); white-space: nowrap; }
+      .marquee .dot { color: #c4b88f; }
+
+      .feature { display: grid; grid-template-columns: 1.1fr .9fr; gap: 8vw; align-items: center; }
+      .feature-images { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; align-items: end; }
+      .feature-images img { object-fit: cover; border-radius: var(--radius-md); }
+      .feature-images img:first-child { aspect-ratio: 3 / 4; }
+      .feature-images img:last-child { aspect-ratio: 3 / 4; margin-bottom: -54px; }
+      .feature-copy h2 { max-width: 520px; }
+      .feature-copy > p { max-width: 390px; margin: 30px 0 0; color: rgba(244,239,229,.7); font-size: 17px; }
+      .numbers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 70px; padding-top: 22px; border-top: 1px solid rgba(244,239,229,.22); }
+      .number strong { display: block; font-family: var(--display); font-size: 50px; line-height: 1; font-weight: 400; }
+      .number span { display: block; margin-top: 8px; color: rgba(244,239,229,.6); font-size: 11px; letter-spacing: .13em; text-transform: uppercase; }
+
+      .process { display: grid; grid-template-columns: .8fr 1.2fr; gap: 12vw; }
+      .process-list { border-top: 1px solid var(--line); }
+      .process-item { display: grid; grid-template-columns: 60px 1fr; gap: 22px; padding: 25px 0; border-bottom: 1px solid var(--line); }
+      .process-index { color: var(--wine); font-family: var(--display); font-size: 34px; line-height: 1; }
+      .process-item h3 { margin-bottom: 5px; font-size: 17px; font-weight: 500; }
+      .process-item p { margin-bottom: 0; color: var(--muted); font-size: 14px; }
+
+      .contact { position: relative; overflow: hidden; }
+      .contact::before { content: "J"; position: absolute; right: 2vw; bottom: -16vw; color: rgba(244,239,229,.07); font-family: var(--display); font-size: 62vw; line-height: .8; pointer-events: none; }
+      .contact-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.2fr .8fr; gap: 10vw; align-items: end; }
+      .contact h2 { max-width: 680px; }
+      .contact-copy p { max-width: 325px; margin: 32px 0 0; color: rgba(244,239,229,.72); font-size: 16px; }
+      .contact-actions { display: flex; flex-direction: column; gap: 13px; align-items: flex-start; }
+      .button { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 22px; border: 1px solid rgba(244,239,229,.55); border-radius: 999px; color: var(--cream); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; transition: .25s ease; }
+      .button:hover { border-color: var(--cream); background: var(--cream); color: var(--wine); }
+      .button--solid { border-color: var(--cream); background: var(--cream); color: var(--wine); }
+      .button--solid:hover { background: transparent; color: var(--cream); }
+
+      footer { display: flex; justify-content: space-between; gap: 20px; padding: 26px 7vw; background: #26281e; color: rgba(244,239,229,.62); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+      footer a:hover { color: var(--cream); }
+
+      .reveal { opacity: 0; transform: translateY(34px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+      .reveal.is-visible { opacity: 1; transform: translateY(0); }
+      .delay-1 { transition-delay: .1s; }
+      .delay-2 { transition-delay: .2s; }
+      .delay-3 { transition-delay: .3s; }
+      @keyframes hero-in { from { transform: scale(1.06); opacity: .35; } to { transform: scale(1); opacity: 1; } }
+      @keyframes marquee { to { transform: translateX(-50%); } }
+
+      @media (min-width: 761px) and (max-width: 1100px) {
+        .topbar { padding-inline: 5vw; }
+        .nav { gap: 17px; font-size: 11px; }
+        .hero-content { grid-template-columns: minmax(0, 1fr) 220px; gap: 5vw; padding-inline: 5vw; }
+        h1 { font-size: clamp(64px, 8.8vw, 102px); }
+        .section { padding: 108px 5vw; }
+        .statement, .process { gap: 6vw; }
+        .feature { gap: 5vw; }
+        h2 { font-size: clamp(52px, 6.8vw, 78px); }
+        .work-card:nth-child(n) { grid-column: span 6; }
+        .work-card:nth-child(3n) { grid-column: span 4; }
+        .work-card:nth-child(2) img, .work-card:nth-child(5) img, .work-card:nth-child(8) img { aspect-ratio: 4 / 5; }
+      }
+
+      @media (max-width: 760px) {
+        .topbar { padding: 15px 5vw; }
+        .brand { gap: 9px; font-size: 10px; letter-spacing: .15em; }
+        .brand-mark { width: 25px; height: 25px; font-size: 15px; }
+        .nav { display: none; }
+        .menu-toggle { display: block; padding: 7px 0; font-size: 11px; letter-spacing: .15em; text-transform: uppercase; }
+        .hero-content { display: block; padding: 0 7vw 7vh; }
+        .eyebrow { margin-bottom: 14px; font-size: 9px; letter-spacing: .15em; }
+        h1 { max-width: 620px; margin-bottom: 0; font-size: clamp(48px, 15vw, 78px); line-height: .9; letter-spacing: -.035em; }
+        .hero-lede, .hero-side, .section-intro { display: none; }
+        .hero-side { display: none; }
+        .section { padding: 72px 6vw; }
+        .section-head { display: block; margin-bottom: 30px; }
+        .section-kicker { margin-bottom: 11px; font-size: 9px; letter-spacing: .16em; }
+        h2 { font-size: clamp(44px, 12.5vw, 72px); line-height: .93; }
+        .statement, .feature, .process, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+        .statement { gap: 28px; }
+        .statement-copy > p:last-child, .feature-copy > p:last-of-type, .contact-copy > p:last-child, .process-item p { display: none; }
+        .statement-figure { max-width: 520px; margin-left: auto; }
+        .statement-figure img { aspect-ratio: 5 / 5.5; }
+        .figure-note { width: 44%; padding: 14px 16px; }
+        .figure-note strong { font-size: 31px; }
+        .figure-note span { display: none; }
+        .portfolio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .work-card, .work-card:nth-child(n) { grid-column: span 1; }
+        .work-card:nth-child(2n) { transform: translateY(28px); }
+        .work-card img, .work-card:nth-child(2n) img { aspect-ratio: 3 / 4; }
+        .work-overlay { display: none; }
+        .filter { padding: 9px 13px; font-size: 11px; }
+        .portfolio-grid { margin-top: 22px !important; }
+        .marquee { padding: 15px 0; }
+        .marquee-track { gap: 20px; animation-duration: 18s; }
+        .marquee span { font-size: 32px; }
+        .feature { gap: 32px; }
+        .feature-images { gap: 10px; }
+        .feature-images img:last-child { margin-bottom: -18px; }
+        .numbers { margin-top: 36px; gap: 12px; }
+        .number strong { font-size: 39px; }
+        .number span { font-size: 9px; line-height: 1.35; }
+        .process { gap: 26px; }
+        .process-item { grid-template-columns: 42px 1fr; gap: 14px; padding: 19px 0; }
+        .process-index { font-size: 28px; }
+        .process-item h3 { margin-bottom: 0; font-size: 16px; }
+        .contact-actions { align-items: stretch; }
+        .button { width: 100%; }
+        .contact-inner { gap: 30px; }
+        footer { flex-direction: column; gap: 8px; padding: 20px 6vw; font-size: 9px; }
+        footer span:last-child { display: none; }
+      }
+
+      @media (max-width: 360px) {
+        .hero-content { padding-inline: 6vw; }
+        h1 { font-size: 45px; }
+        .section { padding-inline: 5vw; }
+        .portfolio-grid { gap: 9px; }
+        .work-card:nth-child(2n) { transform: translateY(20px); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Júnior Décor início"><span class="brand-mark">J</span><span>Júnior Décor</span></a>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#sobre">O estúdio</a>
+        <a href="#portfolio">Portfólio</a>
+        <a href="#processo">Como fazemos</a>
+        <a href="#contato">Orçamentos</a>
+      </nav>
+      <button class="menu-toggle" type="button" aria-label="Abrir navegação" aria-expanded="false">Menu</button>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <img class="hero-media" src="assets/hero-orchid.png" alt="Júnior cuidando de uma orquídea em seu ateliê floral" />
+        <div class="hero-content">
+          <div class="reveal is-visible">
+            <p class="eyebrow">Decoração autoral · Lavras, Tiradentes e região</p>
+            <h1 id="hero-title">Onde há decoração, há beleza que floresce.</h1>
+            <p class="hero-lede">Eventos com presença, textura e intenção — do primeiro arranjo ao último detalhe.</p>
+          </div>
+          <div class="hero-side reveal is-visible delay-2">
+            <p>Arte floral e cenografia para celebrações que merecem ser lembradas pela atmosfera.</p>
+            <a class="scroll-cue" href="#sobre">Deslize para descobrir</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="sobre">
+        <div class="statement">
+          <div class="statement-copy reveal">
+            <p class="section-kicker">O estúdio</p>
+            <h2>Flores como linguagem.</h2>
+            <p>Júnior Décor cria cenários que acolhem, surpreendem e contam a história de quem celebra. Uma leitura sensível do espaço, traduzida em flor, luz e matéria.</p>
+          </div>
+          <figure class="statement-figure reveal delay-2">
+            <img src="assets/portrait-junior.png" alt="Retrato de Júnior, fundador da Júnior Décor" loading="lazy" />
+            <figcaption class="figure-note"><strong>150+</strong><span>projetos realizados desde 2024</span></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section section--olive" id="portfolio">
+        <div class="section-head reveal">
+          <div><p class="section-kicker">Portfólio selecionado</p><h2>Detalhes que ficam.</h2></div>
+          <p class="section-intro">Uma seleção de celebrações, encontros e instalações florais assinadas pelo estúdio.</p>
+        </div>
+        <div class="work-nav reveal delay-1" role="group" aria-label="Filtrar portfólio">
+          <button class="filter is-active" type="button" data-filter="all">Tudo</button>
+          <button class="filter" type="button" data-filter="casamento">Casamentos</button>
+          <button class="filter" type="button" data-filter="celebracao">Celebrações</button>
+          <button class="filter" type="button" data-filter="floral">Arte floral</button>
+        </div>
+        <div class="portfolio-grid" style="margin-top: 30px">
+          <article class="work-card reveal" data-category="floral"><img src="assets/floral-table.png" alt="Mesa de doces com cascata floral branca e luz quente" loading="lazy" /><div class="work-overlay"><p class="work-title">Luz & flores</p><p class="work-meta">Arte floral · Lavras</p></div></article>
+          <article class="work-card reveal delay-1" data-category="celebracao"><img src="assets/pastel-table.png" alt="Mesa de festa ao ar livre com flores e balões em tons pastel" loading="lazy" /><div class="work-overlay"><p class="work-title">Jardim de celebração</p><p class="work-meta">Aniversário · Tiradentes</p></div></article>
+          <article class="work-card reveal delay-2" data-category="floral"><img src="assets/sacred-florals.png" alt="Imagem sacra cercada por flores brancas e folhagens" loading="lazy" /><div class="work-overlay"><p class="work-title">Devoção</p><p class="work-meta">Composição floral</p></div></article>
+          <article class="work-card reveal" data-category="celebracao"><img src="assets/colorful-details.png" alt="Detalhes coloridos de uma mesa floral com doces e frutas" loading="lazy" /><div class="work-overlay"><p class="work-title">Cor em cena</p><p class="work-meta">Recepção · Lavras</p></div></article>
+          <article class="work-card reveal delay-1" data-category="floral"><img src="assets/tropical-table-02.png" alt="Mesa tropical com flores brancas, madeira e luz natural" loading="lazy" /><div class="work-overlay"><p class="work-title">Tropical essencial</p><p class="work-meta">Floral design · Região</p></div></article>
+          <article class="work-card reveal delay-2" data-category="casamento"><img src="assets/outdoor-ceremony.png" alt="Cerimônia ao ar livre com arco de flores brancas" loading="lazy" /><div class="work-overlay"><p class="work-title">Ao ar livre</p><p class="work-meta">Cerimônia · Lavras</p></div></article>
+          <article class="work-card reveal" data-category="casamento"><img src="assets/white-ceremony.png" alt="Caminho de cerimônia com flores brancas em um campo" loading="lazy" /><div class="work-overlay"><p class="work-title">Caminho branco</p><p class="work-meta">Casamento · Tiradentes</p></div></article>
+          <article class="work-card reveal delay-1" data-category="celebracao"><img src="assets/garden-cake.png" alt="Bolo branco de três andares cercado por flores de jardim" loading="lazy" /><div class="work-overlay"><p class="work-title">Jardim em festa</p><p class="work-meta">Celebração · Região</p></div></article>
+          <article class="work-card reveal delay-2" data-category="floral"><img src="assets/pendant-lights.png" alt="Instalação floral colorida com luminárias artesanais" loading="lazy" /><div class="work-overlay"><p class="work-title">Botânica suspensa</p><p class="work-meta">Instalação floral</p></div></article>
+          <article class="work-card reveal" data-category="celebracao"><img src="assets/rustic-lounge.png" alt="Ambiente rústico com flores, madeira e luminárias de palha" loading="lazy" /><div class="work-overlay"><p class="work-title">Casa-jardim</p><p class="work-meta">Recepção · Região</p></div></article>
+          <article class="work-card reveal delay-1" data-category="celebracao"><img src="assets/family-garden.png" alt="Família celebrando em uma mesa florida no jardim" loading="lazy" /><div class="work-overlay"><p class="work-title">Afeto à mesa</p><p class="work-meta">Celebração · Lavras</p></div></article>
+          <article class="work-card reveal delay-2" data-category="celebracao"><img src="assets/pastel-balloons.png" alt="Balões translúcidos em tons pastel suspensos entre árvores" loading="lazy" /><div class="work-overlay"><p class="work-title">Leveza</p><p class="work-meta">Cenografia · Região</p></div></article>
+          <article class="work-card reveal" data-category="floral"><img src="assets/portrait-flower.png" alt="Retrato editorial de Júnior com uma flor branca" loading="lazy" /><div class="work-overlay"><p class="work-title">Ponto de vista</p><p class="work-meta">Editorial · Júnior Décor</p></div></article>
+          <article class="work-card reveal delay-1" data-category="celebracao"><img src="assets/colorful-floral.png" alt="Cenografia colorida com plantas, flores tropicais e luminárias" loading="lazy" /><div class="work-overlay"><p class="work-title">Cor viva</p><p class="work-meta">Recepção · Tiradentes</p></div></article>
+        </div>
+      </section>
+
+      <section class="section section--wine">
+        <div class="marquee reveal" aria-label="Serviços Júnior Décor"><div class="marquee-track"><span>Flores que recebem</span><span class="dot">✳</span><span>Espaços que emocionam</span><span class="dot">✳</span><span>Flores que recebem</span><span class="dot">✳</span><span>Espaços que emocionam</span></div></div>
+        <div class="feature" style="margin-top: 120px">
+          <div class="feature-images reveal"><img src="assets/tropical-table-01.png" alt="Mesa tropical com folhagens e flores brancas" loading="lazy" /><img src="assets/tropical-table-03.png" alt="Arranjo floral branco em mesa de madeira" loading="lazy" /></div>
+          <div class="feature-copy reveal delay-2"><p class="section-kicker">Uma assinatura</p><h2>O espaço também celebra.</h2><p>Do jardim à mesa posta, cada escolha cria continuidade: a luz, a textura da madeira, o perfume das flores e a pausa certa para o olhar.</p><div class="numbers"><div class="number"><strong>02</strong><span>anos de estúdio</span></div><div class="number"><strong>03</strong><span>territórios atendidos</span></div><div class="number"><strong>∞</strong><span>possibilidades</span></div></div></div>
+        </div>
+      </section>
+
+      <section class="section" id="processo">
+        <div class="process">
+          <div class="reveal"><p class="section-kicker">Como fazemos</p><h2>Do gesto ao cenário.</h2></div>
+          <div class="process-list reveal delay-1">
+            <div class="process-item"><div class="process-index">01</div><div><h3>Escuta</h3><p>Entendemos o momento, o lugar e a sensação que você quer deixar em quem chega.</p></div></div>
+            <div class="process-item"><div class="process-index">02</div><div><h3>Direção</h3><p>Construímos uma proposta visual com flores, cores, mobiliário e luz em conversa.</p></div></div>
+            <div class="process-item"><div class="process-index">03</div><div><h3>Entrega</h3><p>Montamos tudo com precisão para que, no dia, você só precise viver a celebração.</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--wine contact" id="contato">
+        <div class="contact-inner">
+          <div class="contact-copy reveal"><p class="section-kicker">Vamos criar?</p><h2>Seu momento merece uma atmosfera à altura.</h2><p>Conte a data, o lugar e o que você imagina. Júnior responde pessoalmente pelo WhatsApp ou Instagram.</p></div>
+          <div class="contact-actions reveal delay-2"><a class="button button--solid" href="https://wa.me/5535997723583?text=Ol%C3%A1%2C%20J%C3%BAnior!%20Gostaria%20de%20conversar%20sobre%20a%20decora%C3%A7%C3%A3o%20do%20meu%20evento." target="_blank" rel="noreferrer">Falar pelo WhatsApp</a><a class="button" href="https://www.instagram.com/juniordecor_eventos/" target="_blank" rel="noreferrer">Ver no Instagram</a></div>
+        </div>
+      </section>
+    </main>
+
+    <footer><span>Júnior Décor · Decoração de Eventos</span><a href="https://www.instagram.com/juniordecor_eventos/" target="_blank" rel="noreferrer">@juniordecor_eventos</a><span>Lavras · Tiradentes · Região</span></footer>
+
+    <script>
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); revealObserver.unobserve(entry.target); } });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal:not(.is-visible)').forEach((el) => revealObserver.observe(el));
+
+      const filters = document.querySelectorAll('.filter');
+      const cards = document.querySelectorAll('.work-card');
+      filters.forEach((filter) => filter.addEventListener('click', () => {
+        filters.forEach((item) => item.classList.remove('is-active'));
+        filter.classList.add('is-active');
+        const selected = filter.dataset.filter;
+        cards.forEach((card) => card.classList.toggle('is-hidden', selected !== 'all' && card.dataset.category !== selected));
+      }));
+
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav');
+      menuToggle?.addEventListener('click', () => {
+        const open = nav.classList.toggle('is-open');
+        menuToggle.setAttribute('aria-expanded', String(open));
+        nav.style.display = open ? 'flex' : '';
+        nav.style.position = open ? 'absolute' : '';
+        nav.style.top = open ? '60px' : '';
+        nav.style.right = open ? '5vw' : '';
+        nav.style.padding = open ? '18px' : '';
+        nav.style.flexDirection = open ? 'column' : '';
+        nav.style.background = open ? 'rgba(51,54,39,.95)' : '';
+      });
+      nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+        if (!nav.classList.contains('is-open')) return;
+        nav.classList.remove('is-open');
+        menuToggle?.setAttribute('aria-expanded', 'false');
+        nav.removeAttribute('style');
+      }));
+    </script>
+  </body>
+</html>
