@@ -76,24 +76,21 @@
       .work-nav { display: flex; flex-wrap: wrap; gap: 10px; }
       .filter { padding: 10px 16px; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--muted); cursor: pointer; font-size: 12px; transition: .25s ease; }
       .filter:hover, .filter.is-active { border-color: var(--olive); background: var(--olive); color: var(--cream); }
-      .portfolio-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; align-items: start; }
-      .work-card { position: relative; grid-column: span 4; overflow: hidden; cursor: pointer; }
-      .work-card:nth-child(1), .work-card:nth-child(6), .work-card:nth-child(10) { grid-column: span 5; }
-      .work-card:nth-child(2), .work-card:nth-child(5), .work-card:nth-child(8) { grid-column: span 7; }
-      .work-card:nth-child(3), .work-card:nth-child(4), .work-card:nth-child(7), .work-card:nth-child(9) { grid-column: span 4; }
-      .work-card img { aspect-ratio: 4 / 5; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .4s ease; }
-      .work-card:nth-child(2) img, .work-card:nth-child(5) img, .work-card:nth-child(8) img { aspect-ratio: 7 / 5; }
-      .work-card:hover img { transform: scale(1.045); filter: saturate(.8); }
-      .work-overlay { position: absolute; inset: auto 0 0; padding: 27px 24px 23px; color: #fff; background: linear-gradient(transparent, rgba(0,0,0,.67)); transform: translateY(12px); opacity: 0; transition: .35s ease; }
-      .work-card:hover .work-overlay { transform: translateY(0); opacity: 1; }
-      .work-title { margin: 0 0 2px; font-family: var(--display); font-size: 30px; line-height: 1; }
-      .work-meta { margin: 0; color: rgba(255,255,255,.72); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
-      .work-card.is-hidden { display: none; }
+      .portfolio-grid { display: grid; gap: 70px; }
+      .project-card { display: grid; gap: 24px; }
+      .project-head { display: flex; justify-content: space-between; align-items: end; gap: 28px; padding-bottom: 18px; border-bottom: 1px solid rgba(244,239,229,.2); }
+      .project-title { margin: 0; font-family: var(--display); font-size: clamp(34px, 4vw, 64px); font-weight: 400; line-height: .95; letter-spacing: -.04em; }
+      .project-meta { max-width: 300px; margin: 0; color: rgba(244,239,229,.62); font-size: 11px; letter-spacing: .14em; text-align: right; text-transform: uppercase; }
+      .project-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; align-items: stretch; }
+      .project-gallery figure { position: relative; min-width: 0; margin: 0; overflow: hidden; background: rgba(0,0,0,.12); }
+      .project-gallery figure:first-child { grid-column: span 2; grid-row: span 2; }
+      .project-gallery img { width: 100%; height: 100%; min-height: 230px; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .4s ease; }
+      .project-gallery figure:not(:first-child) img { aspect-ratio: 4 / 3; }
+      .project-gallery figure:hover img { transform: scale(1.045); filter: saturate(.82); }
+      .project-gallery figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 24px 18px 14px; color: #fff; background: linear-gradient(transparent, rgba(0,0,0,.64)); font-size: 11px; letter-spacing: .12em; opacity: 0; text-transform: uppercase; transition: opacity .3s ease; }
+      .project-gallery figure:hover figcaption { opacity: 1; }
+      .project-card.is-hidden { display: none; }
 
-      .marquee { overflow: hidden; padding: 22px 0; border-top: 1px solid rgba(244,239,229,.18); border-bottom: 1px solid rgba(244,239,229,.18); }
-      .marquee-track { width: max-content; display: flex; gap: 34px; animation: marquee 22s linear infinite; }
-      .marquee span { font-family: var(--display); font-size: clamp(34px, 5vw, 72px); white-space: nowrap; }
-      .marquee .dot { color: #c4b88f; }
 
       .feature { display: grid; grid-template-columns: 1.1fr .9fr; gap: 8vw; align-items: center; }
       .feature-images { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; align-items: end; }
@@ -114,7 +111,6 @@
       .process-item p { margin-bottom: 0; color: var(--muted); font-size: 14px; }
 
       .contact { position: relative; overflow: hidden; }
-      .contact::before { content: "J"; position: absolute; right: 2vw; bottom: -16vw; color: rgba(244,239,229,.07); font-family: var(--display); font-size: 62vw; line-height: .8; pointer-events: none; }
       .contact-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.2fr .8fr; gap: 10vw; align-items: end; }
       .contact h2 { max-width: 680px; }
       .contact-copy p { max-width: 325px; margin: 32px 0 0; color: rgba(244,239,229,.72); font-size: 16px; }
@@ -133,7 +129,6 @@
       .delay-2 { transition-delay: .2s; }
       .delay-3 { transition-delay: .3s; }
       @keyframes hero-in { from { transform: scale(1.06); opacity: .35; } to { transform: scale(1); opacity: 1; } }
-      @keyframes marquee { to { transform: translateX(-50%); } }
 
       @media (min-width: 761px) and (max-width: 1100px) {
         .topbar { padding-inline: 5vw; }
@@ -144,9 +139,8 @@
         .statement, .process { gap: 6vw; }
         .feature { gap: 5vw; }
         h2 { font-size: clamp(52px, 6.8vw, 78px); }
-        .work-card:nth-child(n) { grid-column: span 6; }
-        .work-card:nth-child(3n) { grid-column: span 4; }
-        .work-card:nth-child(2) img, .work-card:nth-child(5) img, .work-card:nth-child(8) img { aspect-ratio: 4 / 5; }
+        .project-gallery { grid-template-columns: repeat(2, 1fr); }
+        .project-gallery figure:first-child { grid-column: span 2; grid-row: span 1; }
       }
 
       @media (max-width: 760px) {
@@ -172,16 +166,15 @@
         .figure-note { width: 44%; padding: 14px 16px; }
         .figure-note strong { font-size: 31px; }
         .figure-note span { display: none; }
-        .portfolio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .work-card, .work-card:nth-child(n) { grid-column: span 1; }
-        .work-card:nth-child(2n) { transform: translateY(28px); }
-        .work-card img, .work-card:nth-child(2n) img { aspect-ratio: 3 / 4; }
+        .portfolio-grid { gap: 48px; }
+        .project-head { display: block; }
+        .project-meta { margin-top: 12px; text-align: left; }
+        .project-gallery { grid-template-columns: repeat(2, 1fr); gap: 9px; }
+        .project-gallery figure:first-child { grid-column: span 2; }
+        .project-gallery img, .project-gallery figure:not(:first-child) img { min-height: 160px; aspect-ratio: 4 / 5; }
         .work-overlay { display: none; }
         .filter { padding: 9px 13px; font-size: 11px; }
         .portfolio-grid { margin-top: 22px !important; }
-        .marquee { padding: 15px 0; }
-        .marquee-track { gap: 20px; animation-duration: 18s; }
-        .marquee span { font-size: 32px; }
         .feature { gap: 32px; }
         .feature-images { gap: 10px; }
         .feature-images img:last-child { margin-bottom: -18px; }
@@ -203,8 +196,8 @@
         .hero-content { padding-inline: 6vw; }
         h1 { font-size: 45px; }
         .section { padding-inline: 5vw; }
-        .portfolio-grid { gap: 9px; }
-        .work-card:nth-child(2n) { transform: translateY(20px); }
+        .portfolio-grid { gap: 34px; }
+        .project-gallery { gap: 7px; }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -227,7 +220,7 @@
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
-        <img class="hero-media" src="hero-orchid.png" alt="Júnior cuidando de uma orquídea em seu ateliê floral" />
+        <img class="hero-media" src="hero-orchid-clean.png" alt="Júnior cuidando de uma orquídea em seu ateliê floral" />
         <div class="hero-content">
           <div class="reveal is-visible">
             <p class="eyebrow">Decoração autoral · Lavras, Tiradentes e região</p>
@@ -249,7 +242,7 @@
             <p>Júnior Décor cria cenários que acolhem, surpreendem e contam a história de quem celebra. Uma leitura sensível do espaço, traduzida em flor, luz e matéria.</p>
           </div>
           <figure class="statement-figure reveal delay-2">
-            <img src="portrait-junior.png" alt="Retrato de Júnior, fundador da Júnior Décor" loading="lazy" />
+            <img src="portrait-junior-clean.png" alt="Retrato de Júnior, fundador da Júnior Décor" loading="lazy" />
             <figcaption class="figure-note"><strong>150+</strong><span>projetos realizados desde 2024</span></figcaption>
           </figure>
         </div>
@@ -267,26 +260,51 @@
           <button class="filter" type="button" data-filter="floral">Arte floral</button>
         </div>
         <div class="portfolio-grid" style="margin-top: 30px">
-          <article class="work-card reveal" data-category="floral"><img src="floral-table.png" alt="Mesa de doces com cascata floral branca e luz quente" loading="lazy" /><div class="work-overlay"><p class="work-title">Luz & flores</p><p class="work-meta">Arte floral · Lavras</p></div></article>
-          <article class="work-card reveal delay-1" data-category="celebracao"><img src="pastel-table.png" alt="Mesa de festa ao ar livre com flores e balões em tons pastel" loading="lazy" /><div class="work-overlay"><p class="work-title">Jardim de celebração</p><p class="work-meta">Aniversário · Tiradentes</p></div></article>
-          <article class="work-card reveal delay-2" data-category="floral"><img src="sacred-florals.png" alt="Imagem sacra cercada por flores brancas e folhagens" loading="lazy" /><div class="work-overlay"><p class="work-title">Devoção</p><p class="work-meta">Composição floral</p></div></article>
-          <article class="work-card reveal" data-category="celebracao"><img src="colorful-details.png" alt="Detalhes coloridos de uma mesa floral com doces e frutas" loading="lazy" /><div class="work-overlay"><p class="work-title">Cor em cena</p><p class="work-meta">Recepção · Lavras</p></div></article>
-          <article class="work-card reveal delay-1" data-category="floral"><img src="tropical-table-02.png" alt="Mesa tropical com flores brancas, madeira e luz natural" loading="lazy" /><div class="work-overlay"><p class="work-title">Tropical essencial</p><p class="work-meta">Floral design · Região</p></div></article>
-          <article class="work-card reveal delay-2" data-category="casamento"><img src="outdoor-ceremony.png" alt="Cerimônia ao ar livre com arco de flores brancas" loading="lazy" /><div class="work-overlay"><p class="work-title">Ao ar livre</p><p class="work-meta">Cerimônia · Lavras</p></div></article>
-          <article class="work-card reveal" data-category="casamento"><img src="white-ceremony.png" alt="Caminho de cerimônia com flores brancas em um campo" loading="lazy" /><div class="work-overlay"><p class="work-title">Caminho branco</p><p class="work-meta">Casamento · Tiradentes</p></div></article>
-          <article class="work-card reveal delay-1" data-category="celebracao"><img src="garden-cake.png" alt="Bolo branco de três andares cercado por flores de jardim" loading="lazy" /><div class="work-overlay"><p class="work-title">Jardim em festa</p><p class="work-meta">Celebração · Região</p></div></article>
-          <article class="work-card reveal delay-2" data-category="floral"><img src="pendant-lights.png" alt="Instalação floral colorida com luminárias artesanais" loading="lazy" /><div class="work-overlay"><p class="work-title">Botânica suspensa</p><p class="work-meta">Instalação floral</p></div></article>
-          <article class="work-card reveal" data-category="celebracao"><img src="rustic-lounge.png" alt="Ambiente rústico com flores, madeira e luminárias de palha" loading="lazy" /><div class="work-overlay"><p class="work-title">Casa-jardim</p><p class="work-meta">Recepção · Região</p></div></article>
-          <article class="work-card reveal delay-1" data-category="celebracao"><img src="family-garden.png" alt="Família celebrando em uma mesa florida no jardim" loading="lazy" /><div class="work-overlay"><p class="work-title">Afeto à mesa</p><p class="work-meta">Celebração · Lavras</p></div></article>
-          <article class="work-card reveal delay-2" data-category="celebracao"><img src="pastel-balloons.png" alt="Balões translúcidos em tons pastel suspensos entre árvores" loading="lazy" /><div class="work-overlay"><p class="work-title">Leveza</p><p class="work-meta">Cenografia · Região</p></div></article>
-          <article class="work-card reveal" data-category="floral"><img src="portrait-flower.png" alt="Retrato editorial de Júnior com uma flor branca" loading="lazy" /><div class="work-overlay"><p class="work-title">Ponto de vista</p><p class="work-meta">Editorial · Júnior Décor</p></div></article>
-          <article class="work-card reveal delay-1" data-category="celebracao"><img src="colorful-floral.png" alt="Cenografia colorida com plantas, flores tropicais e luminárias" loading="lazy" /><div class="work-overlay"><p class="work-title">Cor viva</p><p class="work-meta">Recepção · Tiradentes</p></div></article>
+          <article class="project-card reveal" data-category="celebracao">
+            <div class="project-head"><h3 class="project-title">Jardim em festa</h3><p class="project-meta">Aniversário · Tiradentes · 04 imagens do mesmo projeto</p></div>
+            <div class="project-gallery">
+              <figure><img src="pastel-table.png" alt="Mesa de festa ao ar livre com flores e balões em tons pastel" loading="lazy" /><figcaption>Vista geral</figcaption></figure>
+              <figure><img src="family-garden.png" alt="Família celebrando em uma mesa florida no jardim" loading="lazy" /><figcaption>Afeto à mesa</figcaption></figure>
+              <figure><img src="pastel-balloons.png" alt="Balões translúcidos em tons pastel suspensos entre árvores" loading="lazy" /><figcaption>Leveza</figcaption></figure>
+              <figure><img src="garden-cake.png" alt="Bolo branco de três andares cercado por flores de jardim" loading="lazy" /><figcaption>Detalhe doce</figcaption></figure>
+            </div>
+          </article>
+          <article class="project-card reveal delay-1" data-category="floral">
+            <div class="project-head"><h3 class="project-title">Tropical essencial</h3><p class="project-meta">Floral design · Região · 04 imagens do mesmo projeto</p></div>
+            <div class="project-gallery">
+              <figure><img src="tropical-table-01.png" alt="Mesa tropical com folhagens e flores brancas" loading="lazy" /><figcaption>Vista frontal</figcaption></figure>
+              <figure><img src="tropical-table-02.png" alt="Mesa tropical com flores brancas, madeira e luz natural" loading="lazy" /><figcaption>Composição</figcaption></figure>
+              <figure><img src="tropical-table-03.png" alt="Arranjo floral branco em mesa de madeira" loading="lazy" /><figcaption>Arranjo central</figcaption></figure>
+              <figure><img src="rustic-lounge.png" alt="Ambiente rústico com flores, madeira e luminárias de palha" loading="lazy" /><figcaption>Atmosfera</figcaption></figure>
+            </div>
+          </article>
+          <article class="project-card reveal delay-2" data-category="celebracao">
+            <div class="project-head"><h3 class="project-title">Cor viva</h3><p class="project-meta">Recepção · Tiradentes · 03 imagens do mesmo projeto</p></div>
+            <div class="project-gallery">
+              <figure><img src="colorful-floral.png" alt="Cenografia colorida com plantas, flores tropicais e luminárias" loading="lazy" /><figcaption>Cenografia</figcaption></figure>
+              <figure><img src="colorful-details.png" alt="Detalhes coloridos de uma mesa floral com doces e frutas" loading="lazy" /><figcaption>Detalhes</figcaption></figure>
+              <figure><img src="pendant-lights.png" alt="Instalação floral colorida com luminárias artesanais" loading="lazy" /><figcaption>Luz e cor</figcaption></figure>
+            </div>
+          </article>
+          <article class="project-card reveal" data-category="casamento">
+            <div class="project-head"><h3 class="project-title">Cerimônia ao ar livre</h3><p class="project-meta">Casamento · Lavras e região · 02 imagens do mesmo projeto</p></div>
+            <div class="project-gallery">
+              <figure><img src="outdoor-ceremony.png" alt="Cerimônia ao ar livre com arco de flores brancas" loading="lazy" /><figcaption>Arco floral</figcaption></figure>
+              <figure><img src="white-ceremony.png" alt="Caminho de cerimônia com flores brancas em um campo" loading="lazy" /><figcaption>Caminho branco</figcaption></figure>
+            </div>
+          </article>
+          <article class="project-card reveal delay-1" data-category="floral">
+            <div class="project-head"><h3 class="project-title">Composições florais</h3><p class="project-meta">Arte floral · Lavras · 02 imagens do mesmo projeto</p></div>
+            <div class="project-gallery">
+              <figure><img src="floral-table.png" alt="Mesa de doces com cascata floral branca e luz quente" loading="lazy" /><figcaption>Luz & flores</figcaption></figure>
+              <figure><img src="sacred-florals.png" alt="Imagem sacra cercada por flores brancas e folhagens" loading="lazy" /><figcaption>Devoção</figcaption></figure>
+            </div>
+          </article>
         </div>
       </section>
 
       <section class="section section--wine">
-        <div class="marquee reveal" aria-label="Serviços Júnior Décor"><div class="marquee-track"><span>Flores que recebem</span><span class="dot">✳</span><span>Espaços que emocionam</span><span class="dot">✳</span><span>Flores que recebem</span><span class="dot">✳</span><span>Espaços que emocionam</span></div></div>
-        <div class="feature" style="margin-top: 120px">
+        <div class="feature">
           <div class="feature-images reveal"><img src="tropical-table-01.png" alt="Mesa tropical com folhagens e flores brancas" loading="lazy" /><img src="tropical-table-03.png" alt="Arranjo floral branco em mesa de madeira" loading="lazy" /></div>
           <div class="feature-copy reveal delay-2"><p class="section-kicker">Uma assinatura</p><h2>O espaço também celebra.</h2><p>Do jardim à mesa posta, cada escolha cria continuidade: a luz, a textura da madeira, o perfume das flores e a pausa certa para o olhar.</p><div class="numbers"><div class="number"><strong>02</strong><span>anos de estúdio</span></div><div class="number"><strong>03</strong><span>territórios atendidos</span></div><div class="number"><strong>∞</strong><span>possibilidades</span></div></div></div>
         </div>
@@ -320,7 +338,7 @@
       document.querySelectorAll('.reveal:not(.is-visible)').forEach((el) => revealObserver.observe(el));
 
       const filters = document.querySelectorAll('.filter');
-      const cards = document.querySelectorAll('.work-card');
+      const cards = document.querySelectorAll('.project-card');
       filters.forEach((filter) => filter.addEventListener('click', () => {
         filters.forEach((item) => item.classList.remove('is-active'));
         filter.classList.add('is-active');
