@@ -37,7 +37,7 @@
       .topbar { position: absolute; z-index: 20; top: 0; left: 0; width: 100%; padding: 22px 4.3vw; display: flex; justify-content: space-between; align-items: center; color: var(--cream); }
       .brand { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 600; letter-spacing: .23em; text-transform: uppercase; }
       .brand-logo-frame { width: 42px; height: 42px; flex: none; display: grid; place-items: center; overflow: hidden; border-radius: 50%; background: var(--olive-2); }
-      .brand-logo { width: 70px; height: 70px; max-width: none; object-fit: cover; border-radius: 0; display: block; image-rendering: auto; }
+      .brand-logo { width: 100%; height: 100%; object-fit: contain; border-radius: 0; display: block; image-rendering: auto; transform: scale(1.65); }
       .nav { display: flex; gap: 27px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
       .nav a { opacity: .84; transition: opacity .25s ease; }
       .nav a:hover { opacity: 1; }
@@ -142,7 +142,6 @@
         .topbar { padding: 15px 5vw; }
         .brand { gap: 9px; font-size: 10px; letter-spacing: .15em; }
         .brand-logo-frame { width: 36px; height: 36px; }
-        .brand-logo { width: 60px; height: 60px; }
         .nav { display: none; }
         .menu-toggle { display: block; padding: 7px 0; font-size: 11px; letter-spacing: .15em; text-transform: uppercase; }
         .hero-content { display: block; padding: 0 7vw 7vh; }
