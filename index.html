@@ -34,9 +34,9 @@
       button { font: inherit; }
       ::selection { background: var(--wine); color: var(--cream); }
 
-      .topbar { position: fixed; z-index: 20; top: 0; left: 0; width: 100%; padding: 22px 4.3vw; display: flex; justify-content: space-between; align-items: center; color: var(--cream); mix-blend-mode: difference; }
+      .topbar { position: absolute; z-index: 20; top: 0; left: 0; width: 100%; padding: 22px 4.3vw; display: flex; justify-content: space-between; align-items: center; color: var(--cream); mix-blend-mode: difference; }
       .brand { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 600; letter-spacing: .23em; text-transform: uppercase; }
-      .brand-logo { width: 36px; height: 36px; flex: none; object-fit: cover; border-radius: 50%; display: block; }
+      .brand-logo { width: 42px; height: 42px; flex: none; object-fit: cover; border-radius: 50%; display: block; image-rendering: auto; }
       .nav { display: flex; gap: 27px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
       .nav a { opacity: .84; transition: opacity .25s ease; }
       .nav a:hover { opacity: 1; }
@@ -103,13 +103,6 @@
       .number strong { display: block; font-family: var(--display); font-size: 50px; line-height: 1; font-weight: 400; }
       .number span { display: block; margin-top: 8px; color: rgba(244,239,229,.6); font-size: 11px; letter-spacing: .13em; text-transform: uppercase; }
 
-      .process { display: grid; grid-template-columns: .8fr 1.2fr; gap: 12vw; }
-      .process-list { border-top: 1px solid var(--line); }
-      .process-item { display: grid; grid-template-columns: 60px 1fr; gap: 22px; padding: 25px 0; border-bottom: 1px solid var(--line); }
-      .process-index { color: var(--wine); font-family: var(--display); font-size: 34px; line-height: 1; }
-      .process-item h3 { margin-bottom: 5px; font-size: 17px; font-weight: 500; }
-      .process-item p { margin-bottom: 0; color: var(--muted); font-size: 14px; }
-
       .contact { position: relative; overflow: hidden; }
       .contact-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.2fr .8fr; gap: 10vw; align-items: end; }
       .contact h2 { max-width: 680px; }
@@ -136,7 +129,7 @@
         .hero-content { grid-template-columns: minmax(0, 1fr); gap: 5vw; padding-inline: 5vw; }
         h1 { font-size: clamp(52px, 7.4vw, 84px); }
         .section { padding: 108px 5vw; }
-        .statement, .process { gap: 6vw; }
+        .statement { gap: 6vw; }
         .feature { gap: 5vw; }
         h2 { font-size: clamp(52px, 6.8vw, 78px); }
         .project-gallery { grid-template-columns: repeat(2, 1fr); }
@@ -147,7 +140,7 @@
       @media (max-width: 760px) {
         .topbar { padding: 15px 5vw; }
         .brand { gap: 9px; font-size: 10px; letter-spacing: .15em; }
-        .brand-logo { width: 30px; height: 30px; }
+        .brand-logo { width: 36px; height: 36px; }
         .nav { display: none; }
         .menu-toggle { display: block; padding: 7px 0; font-size: 11px; letter-spacing: .15em; text-transform: uppercase; }
         .hero-content { display: block; padding: 0 7vw 7vh; }
@@ -158,9 +151,9 @@
         .section-head { display: block; margin-bottom: 30px; }
         .section-kicker { margin-bottom: 11px; font-size: 9px; letter-spacing: .16em; }
         h2 { font-size: clamp(44px, 12.5vw, 72px); line-height: .93; }
-        .statement, .feature, .process, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+        .statement, .feature, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
         .statement { gap: 28px; }
-        .statement-copy > p:last-child, .feature-copy > p:last-of-type, .contact-copy > p:last-child, .process-item p { display: none; }
+        .statement-copy > p:last-child, .feature-copy > p:last-of-type, .contact-copy > p:last-child { display: none; }
         .statement-figure { max-width: 520px; margin-left: auto; }
         .statement-figure img { aspect-ratio: 5 / 5.5; }
         .figure-note { width: 44%; padding: 14px 16px; }
@@ -185,10 +178,6 @@
         .numbers { margin-top: 36px; gap: 12px; }
         .number strong { font-size: 39px; }
         .number span { font-size: 9px; line-height: 1.35; }
-        .process { gap: 26px; }
-        .process-item { grid-template-columns: 42px 1fr; gap: 14px; padding: 19px 0; }
-        .process-index { font-size: 28px; }
-        .process-item h3 { margin-bottom: 0; font-size: 16px; }
         .contact-actions { align-items: stretch; }
         .button { width: 100%; }
         .contact-inner { gap: 30px; }
@@ -216,7 +205,6 @@
       <nav class="nav" aria-label="Navegação principal">
         <a href="#sobre">O estúdio</a>
         <a href="#portfolio">Portfólio</a>
-        <a href="#processo">Como fazemos</a>
         <a href="#contato">Orçamentos</a>
       </nav>
       <button class="menu-toggle" type="button" aria-label="Abrir navegação" aria-expanded="false">Menu</button>
@@ -307,17 +295,6 @@
         <div class="feature">
           <div class="feature-images reveal"><img src="tropical-table-01.png" alt="Mesa tropical com folhagens e flores brancas" loading="lazy" /><img src="tropical-table-03.png" alt="Arranjo floral branco em mesa de madeira" loading="lazy" /></div>
           <div class="feature-copy reveal delay-2"><p class="section-kicker">Uma assinatura</p><h2>O espaço também celebra.</h2><p>Do jardim à mesa posta, cada escolha cria continuidade: a luz, a textura da madeira, o perfume das flores e a pausa certa para o olhar.</p><div class="numbers"><div class="number"><strong>02</strong><span>anos de estúdio</span></div><div class="number"><strong>03</strong><span>territórios atendidos</span></div><div class="number"><strong>∞</strong><span>possibilidades</span></div></div></div>
-        </div>
-      </section>
-
-      <section class="section" id="processo">
-        <div class="process">
-          <div class="reveal"><p class="section-kicker">Como fazemos</p><h2>Do gesto ao cenário.</h2></div>
-          <div class="process-list reveal delay-1">
-            <div class="process-item"><div class="process-index">01</div><div><h3>Escuta</h3><p>Entendemos o momento, o lugar e a sensação que você quer deixar em quem chega.</p></div></div>
-            <div class="process-item"><div class="process-index">02</div><div><h3>Direção</h3><p>Construímos uma proposta visual com flores, cores, mobiliário e luz em conversa.</p></div></div>
-            <div class="process-item"><div class="process-index">03</div><div><h3>Entrega</h3><p>Montamos tudo com precisão para que, no dia, você só precise viver a celebração.</p></div></div>
-          </div>
         </div>
       </section>
 
